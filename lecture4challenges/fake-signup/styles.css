@@ -1,0 +1,14 @@
+input[type='number'] {
+    width: 40px;
+}
+
+.matrix-one, .matrix-two {
+    width: 150px;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-content: space-between;
+    flex-wrap: wrap;
+    margin: 50px;
+}

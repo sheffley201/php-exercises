@@ -20,5 +20,43 @@
         <div class="container-fluid bg-primary p-3">
             <h1 class='display-1 text-center text-white'>Set Calculator</h1>
         </div>
+
+        <div class="container my-5" style='max-width: 600px'>
+            <form action='set.php' method='post'>
+                <div class="row">
+                    <div class="col">
+                        <label for="set-one">Set one</label>
+                        <select id="set-one" name='set-one' class="form-select">
+                            <option selected>Choose...</option>
+                            <option value='set-1'>Set 1</option>
+                            <option value='set-2'>Set 2</option>
+                            <option value='set-3'>Set 3</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label for="set-two">Set two</label>
+                        <select id="set-two" name='set-two' class="form-select">
+                            <option selected>Choose...</option>
+                            <option value='set-1'>Set 1</option>
+                            <option value='set-2'>Set 2</option>
+                            <option value='set-3'>Set 3</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label for="operation">Operation</label>
+                        <select id="operation" class="form-select">
+                            <option selected>Choose...</option>
+                            <option value='print'>Print set - set one only</option>
+                            <option value='exists'>Exists(n) - set one only</option>
+                            <option value='add'>Add number(n) - set one only</option>
+                            <option value='remove'>Remove number(n) - set one only</option>
+                            <option value='union'>Union - both sets</option>
+                            <option value='intersection'>Intersection - both sets</option>
+                            <option value='difference'>Difference - both sets</option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+        </div>
     </body>
 </html>

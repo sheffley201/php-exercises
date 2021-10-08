@@ -15,21 +15,18 @@
 
         function checkEmpty() {
             if ($this->username == false || $this->email == false || $this->password == false || $this->confirmPassword == false) {
-                //header("Location: ".$loc);
                 array_push($this->errors, 'error=1');
             }
         }
 
         function checkUsername() {
             if (strlen($this->username) < 6) {
-                //header("Location: ".$loc.$this->username);
                 array_push($this->errors, 'user-error='.$this->username);
             }
         }
 
         function checkEmail() {
             if (!str_contains($this->email, '@') || !str_contains($this->email, '.')) {
-                //header("Location: ".$loc.$this->email);
                 array_push($this->errors, 'email-error='.$this->email);
             }
         }
@@ -48,14 +45,12 @@
                 }
             }
             if (!$upper || !$lower || !$number) {
-                //header("Location: ".$loc.$this->password);
                 array_push($this->errors, 'password-error='.$this->password);
             }
         }
 
         function checkMatching() {
             if ($this->password !== $this->confirmPassword) {
-                //header("Location: ".$loc.$this->password.'&other-password='.$this->confirmPassword);
                 array_push($this->errors, 'password-match-error='.$this->password.'&other-password='.$this->confirmPassword);
             }
         }

@@ -20,13 +20,13 @@
 
         function checkUsername($loc) {
             if (strlen($this->username) < 6) {
-                header("Location: ".$loc);
+                header("Location: ".$loc.$this->username);
             }
         }
 
         function checkEmail($loc) {
             if (!str_contains($this->email, '@') || !str_contains($this->email, '.')) {
-                header("Location: ".$loc);
+                header("Location: ".$loc.$this->email);
             }
         }
 
@@ -44,20 +44,20 @@
                 }
             }
             if (!$upper || !$lower || !$number) {
-                header("Location: ".$loc);
+                header("Location: ".$loc.$this->password);
             }
         }
 
         function checkMatching($loc) {
             if ($this->password !== $this->confirmPassword) {
-                header("Location: ".$loc);
+                header("Location: ".$loc.$this->password.'&other-password='.$this->confirmPassword);
             }
         }
     }
     $validate = new Validator();
-    $validate->checkEmpty('fivs.php?error=1');
-    $validate->checkUsername('fivs.php?user-error=1');
-    $validate->checkEmail('fivs.php?email-error=1');
-    $validate->checkPassword('fivs.php?password-error=1');
-    $validate->checkMatching('fivs.php?password-match-error');
+    $validate->checkEmpty('fivs.php?error=');
+    $validate->checkUsername('fivs.php?user-error=');
+    $validate->checkEmail('fivs.php?email-error=');
+    $validate->checkPassword('fivs.php?password-error=');
+    $validate->checkMatching('fivs.php?password-match-error=');
 ?>

@@ -25,24 +25,24 @@
         <form action='validate.php' method='post' novalidate>
             <div class="form-group">
                 <label for="username">Username</label>
-                <input type="text" name='username' class="form-control" id="username" placeholder="Enter username" aria-describedby="usernameHelp">
+                <input type="text" name='username' value='<?php $username ?>' class="form-control" id="username" placeholder="Enter username" aria-describedby="usernameHelp">
                 <small id='usernameHelp' class='form-text text-muted'>Username must be at least 6 characters</small>
             </div>
             <div class="form-group">
                 <label for="email">Email address</label>
-                <input type="email" name='email' class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+                <input type="email" name='email' value='<?php echo $email?>' class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
                 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" name='password' class="form-control" id="password" placeholder="Enter Password" aria-describedby="passwordHelp">
+                <input type="password" name='password' value='<?php echo $password?>' class="form-control" id="password" placeholder="Enter Password" aria-describedby="passwordHelp">
                 <small id="passwordHelp" class="form-text text-muted">
                     Your password must be at least 6 characters long, and contain at least one uppercase, one lowercase, and one number.
                 </small>
             </div>
             <div class="form-group">
                 <label for="confirm-password">Confirm Password</label>
-                <input type="password" name='confirm-password' class="form-control" id="confirm-password" placeholder="Confirm Password">
+                <input type="password" name='confirm-password' value='<?php echo $confirmPassword; ?>' class="form-control" id="confirm-password" placeholder="Confirm Password">
             </div>
             <button type="submit" name='submit' class="btn btn-primary">Submit</button>
         </form>

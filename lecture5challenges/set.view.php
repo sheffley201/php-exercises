@@ -44,7 +44,7 @@
                     </div>
                     <div class="col">
                         <label for="operation">Operation</label>
-                        <select id="operation" class="form-select">
+                        <select id="operation" name='operation' class="form-select">
                             <option selected>Choose...</option>
                             <option value='print'>Print set - set one only</option>
                             <option value='exists'>Exists(n) - set one only</option>
@@ -54,6 +54,16 @@
                             <option value='intersection'>Intersection - both sets</option>
                             <option value='difference'>Difference - both sets</option>
                         </select>
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class='col'>
+                        <label for="number">Number</label>
+                        <input type="number" class='form-control' name="number" id="number" aria-describedby="numberHelp">
+                        <small id='numberHelp' class='form-text text-muted'>For: Add, Remove, and Exists</small>
+                    </div>
+                    <div class='col d-flex justify-content-end align-items-center'>
+                        <input type="submit" value="Do operation" class='btn btn-primary' style='height: 40px'>
                     </div>
                 </div>
             </form>

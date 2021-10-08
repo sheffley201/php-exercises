@@ -4,6 +4,7 @@
         private $email = false;
         private $password = false;
         private $confirmPassword = false;
+        private $errors = [];
 
         function __construct() {
             $this->username = $_POST['username'];
@@ -12,25 +13,28 @@
             $this->confirmPassword = $_POST['confirm-password'];
         }
 
-        function checkEmpty($loc) {
+        function checkEmpty() {
             if ($this->username == false || $this->email == false || $this->password == false || $this->confirmPassword == false) {
-                header("Location: ".$loc);
+                //header("Location: ".$loc);
+                array_push($this->errors, 'error=1');
             }
         }
 
-        function checkUsername($loc) {
+        function checkUsername() {
             if (strlen($this->username) < 6) {
-                header("Location: ".$loc.$this->username);
+                //header("Location: ".$loc.$this->username);
+                array_push($this->errors, 'user-error='.$this->username);
             }
         }
 
-        function checkEmail($loc) {
+        function checkEmail() {
             if (!str_contains($this->email, '@') || !str_contains($this->email, '.')) {
-                header("Location: ".$loc.$this->email);
+                //header("Location: ".$loc.$this->email);
+                array_push($this->errors, 'email-error='.$this->email);
             }
         }
 
-        function checkPassword($loc) {
+        function checkPassword() {
             $upper = false;
             $lower = false;
             $number = false;
@@ -44,20 +48,29 @@
                 }
             }
             if (!$upper || !$lower || !$number) {
-                header("Location: ".$loc.$this->password);
+                //header("Location: ".$loc.$this->password);
+                array_push($this->errors, 'password-error='.$this->password);
             }
         }
 
-        function checkMatching($loc) {
+        function checkMatching() {
             if ($this->password !== $this->confirmPassword) {
-                header("Location: ".$loc.$this->password.'&other-password='.$this->confirmPassword);
+                //header("Location: ".$loc.$this->password.'&other-password='.$this->confirmPassword);
+                array_push($this->errors, 'password-match-error='.$this->password.'&other-password='.$this->confirmPassword);
+            }
+        }
+
+        function returnError($loc) {
+            if (count($this->errors) > 0) {
+                header("Location: ".$loc.implode('&', $this->errors));
             }
         }
     }
     $validate = new Validator();
-    $validate->checkEmpty('fivs.php?error=');
-    $validate->checkUsername('fivs.php?user-error=');
-    $validate->checkEmail('fivs.php?email-error=');
-    $validate->checkPassword('fivs.php?password-error=');
-    $validate->checkMatching('fivs.php?password-match-error=');
+    $validate->checkEmpty();
+    $validate->checkUsername();
+    $validate->checkEmail();
+    $validate->checkPassword();
+    $validate->checkMatching();
+    $validate->returnError('fivs.php?');
 ?>

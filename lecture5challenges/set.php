@@ -53,21 +53,50 @@
         }
 
         function union() {
-            $combine = [];
-            for ($i = 0; $i < 12; $i++) {
-                $first = $this->firstSet[$i];
-                $second = $this->secondSet[$i];
-                if (!in_array($first, $combine)) {
-                    array_push($combine, $first);
+            if ($this->secondSet !== false) {
+                $combine = [];
+                for ($i = 0; $i < 12; $i++) {
+                    $first = $this->firstSet[$i];
+                    $second = $this->secondSet[$i];
+                    if (!in_array($first, $combine)) {
+                        array_push($combine, $first);
+                    }
+                    if (!in_array($second, $combine)) {
+                        array_push($combine, $second);
+                    }
                 }
-                if (!in_array($second, $combine)) {
-                    array_push($combine, $second);
-                }
+                print_r($combine);
+            } else {
+                echo "Please choose an option for both sets";
             }
-            print_r($combine);
         }
 
         function intersection() {
+            if ($this->secondSet !== false) {
+                $combine = [];
+                for ($i = 0; $i < 12; $i++) {
+                    if (in_array($this->firstSet[$i], $this->secondSet)) {
+                        array_push($combine, $this->firstSet[$i]);
+                    }
+                }
+                print_r($combine);
+            } else {
+                echo "Please choose an option for both sets";
+            }
+        }
+
+        function difference() {
+            if ($this->secondSet !== false) {
+                $combine = [];
+                for ($i = 0; $i < 12; $i++) {
+                    if (!in_array($this->firstSet[$i], $this->secondSet)) {
+                        array_push($combine, $this->firstSet[$i]);
+                    }
+                }
+                print_r($combine);
+            } else {
+                echo "Please choose an option for both sets";
+            }
             
         }
     }
@@ -88,6 +117,12 @@
             break;
         case 'union':
             $set->union();
+            break;
+        case 'intersection':
+            $set->intersection();
+            break;
+        case 'difference':
+            $set->difference();
             break;
     }
 ?>
